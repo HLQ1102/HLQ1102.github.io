@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>DB约束条件 | 故事，这里有</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.1.0"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script type="text/javascript" src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script type="text/javascript" src="https://news.qq.com/newsweather/showWeather.js"></script><script src="//msite.baidu.com/sdk/c.js?appid=1603347506741536"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body></body><div class="search-total"><div class="search-quanbu"></div><div class="showSerch"><div class="div serach-span"><a href="#" onclick="outSerch()">关闭&nbsp;&nbsp;&nbsp;</a><br><br></div><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="回车键开启搜索" type="text" name="q" results="0"><br><div id="local-search-result"></div></div></div></div></div><div class="header-02" id="header-02"><div class="header-02-1"><div class="nav2" id="nav1"><div class="header-02-2"><span class="logo-line-before"><i></i></span><a href="/.">故事，这里有</a><span class="logo-line-before"><i></i></span></div><div class="header-02-3"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a></div><div class="header-03"><div class="header-02-5" onclick="showBars()"> <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></div><div class="header-02-4"> <a onclick="showSerch()" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div><div class="header-02-6"> <a href="/."><i class="fa fa-home" aria-hidden="true"></i></a></div></div></div></div></div><div class="header-04" id="header-04" style="display: none;"> <div class="nav2"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a><a href="/about/"><i class="fa fa-rss2"> 关于博主</i></a><a href="/site/"><i class="fa fa-rss2"> 关于本站</i></a><a href="/href/"><i class="fa fa-rss2"> 友情链接</i></a></div></div><div class="body_container"><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4" style="width: 100%;"><div class="content_container"><div class="post-02"></div><div class="post"><h1 class="post-title"><a href="/">DB约束条件</a></h1><div class="post-meta"><a href="https://ziyuan.baidu.com/xzh/commit/method?appid=1603347506741536" target="_Blank">10-16</a><span class="leancloud_visitors" id="/2018/10/16/DBA/DB约束条件_2/" data-flag-title="文章阅读量统计">&nbsp;| <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span class="leancloud-visitors-count"></span><span> 阅读</span></span><span>&nbsp;|&nbsp;<i class="fa fa-keyboard-o"></i>&nbsp;<span class="post-count">1.2k 字 </span></span></div><br><br><div class="post-content"><p><strong>约束条件</strong></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Null</td>
+<td>允许为空，默认设置</td>
+</tr>
+<tr>
+<td>Not null</td>
+<td>不允许为空</td>
+</tr>
+<tr>
+<td>key</td>
+<td>索引类型</td>
+</tr>
+<tr>
+<td>default</td>
+<td>设置默认，缺省为null</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://github.com/HLQ1102/1807/blob/master/%E4%B8%89%E9%98%B6%E6%AE%B51_DBA/db%E7%BA%A6%E6%9D%9F1.png?raw=true" alt=""> </p>
+<p>create table t8(name char(10) not null default “tom”, </p>
+<p>age  tinyint(2) not null default 18,</p>
+<p>likes set(“eat”,”sleep”,”move”) not null default “move”</p>
+<p>);</p>
+<p><strong>修改表结构</strong></p>
+<p><strong>alter</strong>语法结构</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add</td>
+<td>添加字段,添加主键,设置约束</td>
+</tr>
+<tr>
+<td>modify</td>
+<td>修改字段类型、位置、及约束</td>
+</tr>
+<tr>
+<td>change</td>
+<td>修改字段名</td>
+</tr>
+<tr>
+<td>drop</td>
+<td>修改字段</td>
+</tr>
+<tr>
+<td>rename</td>
+<td>修改表名</td>
+</tr>
+</tbody>
+</table>
+<p>修改时如果表下有数据，这是不能修改表的数据类型，宽度和约束条件，不然会产生冲突，修改不成功，宽度可以调大。</p>
+<p>增加字段并放在表的第一列</p>
+<p>mysql&gt; alter table t9 add sex set(“man”,”wman”) default “man” after name;</p>
+<p>增加字段并放在哪个字段之后</p>
+<p>修改字段名</p>
+<p>alter table 表明 change 源字段名 新字段名 类型(宽度) 约束条件;</p>
+<p>alter table t9 change sex ssex set(“man”,”wman”,”zhong”) not null default “zhong” ;</p>
+<p>mysql&gt; alter table t9 add sex set(“man”,”wman”) default “man” after name;</p>
+<p>修改字段的位置</p>
+<p>alter table t9 modify ssex set(‘man’,’wman’,’zhong’) not null default ‘zhong’ after age;</p>
+<p>select * from t9</p>
+<p><strong>MySql 索引</strong></p>
+<p>是什么</p>
+<ul>
+<li><p>索引时对记录集的多个字段进行排序的方法</p>
+</li>
+<li><p>类似于数的目录</p>
+</li>
+<li><p>索引算法包括：Btree(二叉树)、B+tree、hash，mysql默认Btree，可修改</p>
+</li>
+<li><p>索引的标志是MUL</p>
+</li>
+</ul>
+<p><img src="https://github.com/HLQ1102/1807/blob/master/%E4%B8%89%E9%98%B6%E6%AE%B51_DBA/%E5%9B%BE%E7%89%872.png?raw=true" alt=""> </p>
+<p>索引优点</p>
+<ul>
+<li><p>通过创建为以性索引，可以保证数据库表中每一行数据的唯一性</p>
+</li>
+<li><p>可以加<strong>快数据的检索速度</strong></p>
+</li>
+</ul>
+<p>索引优点</p>
+<ul>
+<li><p>当对表中的数据进行数据进行增加、删除和修改的时候，索引叶要动态的维护，降低了数据的维护速度</p>
+</li>
+<li><p>索引需要占用物理空间</p>
+</li>
+</ul>
+<p><strong>键值类型</strong></p>
+<p><strong>foreign key:外键</strong></p>
+<p><strong>primary key:主键</strong></p>
+<p>fulltext  :全文索引</p>
+<p>unique:唯一索引</p>
+<p><strong>index:普通索引</strong></p>
+<p>index 使用说明</p>
+<ul>
+<li><p>一个表中可以有多个index字段</p>
+</li>
+<li><p>字段的值允许有重复，且可以赋null值</p>
+</li>
+<li><p>经常把做查询的条件的字段设置为index字段    </p>
+</li>
+<li><p>index字段的key标志是MUL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
+</li>
+</ul>
+<p>建表的时候指定索引字段</p>
+<ul>
+<li>index(字段1),index(字段2)…</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table ta( id tinyint not null</span><br><span class="line"></span><br><span class="line">   	 Name char(10) not null,</span><br><span class="line"></span><br><span class="line"> Index(id),index(name)</span><br><span class="line"></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>在已有的表中设置index字段</p>
+<ul>
+<li><p>create index 索引名 on 表名(字段名);</p>
+</li>
+<li><p>create index name on ta(name);</p>
+</li>
+</ul>
+<p>删除表中的索引字段</p>
+<ul>
+<li><p>drop index 索引名 on 表名;</p>
+</li>
+<li><p>drop index name on ta(name);</p>
+</li>
+</ul>
+<p>查看表的索引信息</p>
+<ul>
+<li>show index from 表名;</li>
+</ul>
+<p><strong>primary key主键</strong></p>
+<p>注意</p>
+<p>- 一个表中只能有一个primary key字段</p>
+<p>- 对应的字段值不允许有重复，且不允许赋NULL值</p>
+<p>- 如果有多个字段都做为primary key，称为复合主键，必须一起创建,一起删除</p>
+<p>- 主键字段的key标志是PRI</p>
+<p>- 通常与AUTO_INCREMENT连用(auto_increment)</p>
+<p>- 经常把表中能够为以表示记录的字段设置为主键字段 [记录编号字段]</p>
+<p>添加主键的创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create table ta1(id tinyint primary key, name char(10), stu tinyint, index(stu));</span><br><span class="line"></span><br><span class="line">create table ta1(id tinyint, name char(10), stu tinyint, primary key(id), index(stu));</span><br></pre></td></tr></table></figure>
+<p>复合主键</p>
+<p>把多个字段合并在一起充当主键</p>
+<p>多个字段不能同时相同.</p>
+<p>创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table ta3(cip char(15), </span><br><span class="line"></span><br><span class="line">     port tinyint, </span><br><span class="line"></span><br><span class="line">  				     status enum(&quot;allow&quot;,&quot;deny&quot;),</span><br><span class="line"></span><br><span class="line">     primary key(cip,port)</span><br><span class="line"></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>desc ta3; 查询的时候cip和port的key标示是PRI</p>
+<p>  删除主键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table ta3 drop primary key;</span><br></pre></td></tr></table></figure>
+<p>  添加主键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table ta3 add primary key(cip);  //需要在key里指定主键字段名</span><br></pre></td></tr></table></figure>
+<p>  添加复合主键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table ta3 add primary key(cip,port);</span><br></pre></td></tr></table></figure>
+<p>  在修改主键的时候不需要加上主键的设置信息，因为主键有专门删除的语句</p>
+<p>  auto_incremen 自动增长的字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table ta3(id int(3) primary key auto_increment,name char(10);</span><br></pre></td></tr></table></figure>
+<p>  删除有自增长的主键时，需要将主键删除后才能删除主键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alter table ta3 modify id int(3) not null;</span><br><span class="line"></span><br><span class="line">alter table ta3 drop primary key;</span><br></pre></td></tr></table></figure>
+<p><strong>foreign key外键</strong></p>
+<pre><code>什么是外键
+</code></pre><p>​        让当前表字段的值在另一个表中字段值的范围内选择</p>
+<p>使用外键的条件</p>
+<p>​    表的存储引擎必须是 innodb</p>
+<p>​    字段类型要一致</p>
+<p>​    被参照字段必须要是索引类型的一种 (primary key)</p>
+<p>基本用法</p>
+<p>– FOREIGN KEY( 表 A 的字段名 )</p>
+<p>  References 表 B( 字段名 )</p>
+<p>  ON UPDATE CASCADE</p>
+<p>  ON DELETE CASCADE</p>
+<p>新建员工表</p>
+<p>create table ygtab( </p>
+<p>yg_id int(2) primary key auto_increment,</p>
+<p>name char(10) </p>
+<p>)engine=innodb;</p>
+<p>指定只添加name的字段，yg_id自动增长</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into ygtab(name) values(&quot;fangfang&quot;);</span><br></pre></td></tr></table></figure>
+<p>新建工资表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create table gztab(</span><br><span class="line"></span><br><span class="line">    	gz_id int(2),</span><br><span class="line"></span><br><span class="line">    	pay float(7,2),</span><br><span class="line"></span><br><span class="line">    	foreign key(gz_id) references ygtab(yg_id) </span><br><span class="line"></span><br><span class="line">    	on update cascade on delete cascade</span><br><span class="line"></span><br><span class="line">    	)engine=innodb;</span><br></pre></td></tr></table></figure>
+<p>查看建表命令,可以查看到个种键的名字</p>
+<p>Show create table 表名;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONSTRAINT `gztab_ibfk_1` FOREIGN KEY (`gz_id`) REFERENCES `ygtab` (`yg_id`)</span><br></pre></td></tr></table></figure>
+<p>删除外键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table gztab drop foreign key 外键名;</span><br></pre></td></tr></table></figure>
+<p>当表被外键关联着，此表无法删除</p>
+</div><div style="padding-bottom: 10px;"><ul class="post-copyright">
+<li class="post-copyright-author">
+<strong>本文作者：</strong><a href="/about/">潇九九</a></li><li class="post-copyright-link">
+<strong>本文链接：</strong><a href="http://yoursite.com/2018/10/16/DBA/DB约束条件_2/">http://yoursite.com/2018/10/16/DBA/DB约束条件_2/</a></li><li class="post-copyright-license"><strong>版权声明：</strong><a href="/site/">本文所有权归博主所有，转载请注明署名、出处！Thanks</a></li></ul></div><script type="text/javascript" charset="utf-8" src="https://static.bshare.cn/b/buttonLite.js#uuid=2aceecbb-21d7-4746-a9db-3f8da046a833&amp;style=10&amp;bgcolor=Grey&amp;bp=sinaminiblog,qqim,qzone,weixin&amp;ssc=false"></script><div style="float:right;"><a class="bshareDiv" href="www.bshare.cn/share">分享按钮</a></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/10/17/DBA/DB存储引擎_3/">DB存储引擎</a><a class="next" href="/2018/10/15/DBA/DBA_1/">DBA基础</a></div></div></div></div></div></div><div id="footer-000"><div class="footer-02"><div style="max-width:1150px;margin:0 auto;height:200px;"><div class="footer-div-a" id="123" style="display:flex"><div class="footer-div-b" style="height:120px;"><div style="text-align:left;padding-top:20px;padding-bottom:5px;"></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weixin" aria-hidden="true"></i> <a href="https://huanfan-1252958858.cos.ap-shanghai.myqcloud.com/pic/302701117226241178.jpg" title="微信" target="_Blank"> hyaini</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weibo" aria-hidden="true"></i><a title="微博" target="_Blank"> 萧萧</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-qq" aria-hidden="true"></i><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1102144757&amp;site=qq&amp;menu=yes" title="QQ" target="_Blank"> 1102144757</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=ZBwNBQsIDAkkAgscCQUNCEoHCwk" title="邮件" target="_Blank"> xiaolhm@foxmail.com</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-map-marker" aria-hidden="true"></i><a href="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;s=s%26wd%3D%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E5%94%90%E9%95%87%E6%9D%A5%E5%AE%89%E8%B7%AF%E5%85%B4%E4%B8%9A%E9%93%B6%E8%A1%8C%28%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%29" title="地址" target="_Blank">  Pudong New Area, Chengdu, China</a></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:autopadding-top:20px;padding-bottom:5px;"><div style="padding-top:20px;padding-bottom:20px;"><img heigth="150px" width="150px" src="/img/gongzhonghao.jpg"></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"> </div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"><h3><a href="/href/">友情链接</a></h3><h3><a href="/site/">关于本站</a></h3><h3><a href="/about/">关于博主</a></h3></div></div></div></div></div><div id="footer-01" style="text-align:center;margin:auto;font-size:14px;background-color:#f5f5f5;"><div class="footer-div-a" style="max-width:1150px;display:flex;margin:0 auto"><div class="footer-div-b" style="padding-left:10px;padding-top:7px;padding-bottom:7px;text-align: left;"><a rel="nofollow">©2018  ❤ </a><a href="/." rel="nofollow" font-size="14px" font-weight="bold">故事，这里有</a></div><div class="footer-div-b" style="padding-right:10px;padding-top:15px;padding-bottom:7px;text-align: right;"><a href="https://tongji.baidu.com/web/25553450/overview/index?siteId=11976031" target="_Blank" title="百度统计"><img class="nofancybox" width="40px" height="15px" src="/img/baidu.png"></a><a>&emsp;</a><a href="https://github.com/HLQ1102/" target="_Blank" title="github" style="font-size:19px;"><i class="fa fa-github" aria-hidden="true"></i></a><a>&emsp;</a><a href="https://gitee.com/iyohei" target="_Blank" title="码云"><img class="nofancybox" width="15px" height="15px" src="/img/gitee.ico"></a></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.1.0" async></script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.1.0" async></script><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.1.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.1.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.1.0"></script></div></div></html><script type="text/javascript" src="/js/zidingyi.js" async></script>

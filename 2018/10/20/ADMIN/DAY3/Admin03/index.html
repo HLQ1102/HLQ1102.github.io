@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title> | 故事，这里有</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.1.0"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script type="text/javascript" src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script type="text/javascript" src="https://news.qq.com/newsweather/showWeather.js"></script><script src="//msite.baidu.com/sdk/c.js?appid=1603347506741536"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body></body><div class="search-total"><div class="search-quanbu"></div><div class="showSerch"><div class="div serach-span"><a href="#" onclick="outSerch()">关闭&nbsp;&nbsp;&nbsp;</a><br><br></div><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="回车键开启搜索" type="text" name="q" results="0"><br><div id="local-search-result"></div></div></div></div></div><div class="header-02" id="header-02"><div class="header-02-1"><div class="nav2" id="nav1"><div class="header-02-2"><span class="logo-line-before"><i></i></span><a href="/.">故事，这里有</a><span class="logo-line-before"><i></i></span></div><div class="header-02-3"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a></div><div class="header-03"><div class="header-02-5" onclick="showBars()"> <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></div><div class="header-02-4"> <a onclick="showSerch()" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div><div class="header-02-6"> <a href="/."><i class="fa fa-home" aria-hidden="true"></i></a></div></div></div></div></div><div class="header-04" id="header-04" style="display: none;"> <div class="nav2"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a><a href="/about/"><i class="fa fa-rss2"> 关于博主</i></a><a href="/site/"><i class="fa fa-rss2"> 关于本站</i></a><a href="/href/"><i class="fa fa-rss2"> 友情链接</i></a></div></div><div class="body_container"><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4" style="width: 100%;"><div class="content_container"><div class="post-02"></div><div class="post"><h1 class="post-title"><a href="/"></a></h1><div class="post-meta"><a href="https://ziyuan.baidu.com/xzh/commit/method?appid=1603347506741536" target="_Blank">10-20</a><span class="leancloud_visitors" id="/2018/10/20/ADMIN/DAY3/Admin03/" data-flag-title="文章阅读量统计">&nbsp;| <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span class="leancloud-visitors-count"></span><span> 阅读</span></span><span>&nbsp;|&nbsp;<i class="fa fa-keyboard-o"></i>&nbsp;<span class="post-count">2.2k 字 </span></span></div><br><br><div class="post-content"><p>文本内容操作<br>• less分屏阅读工具<br>• 格式:less [选项] 文件名…</p>
+<p>– 优势:支持前后翻页<br>• 基本交互操作<br>– 按 / 键向后查找(n、N切换)</p>
+<p>[root@A /]# less /etc/passwd<br>     按键盘上下键，进行滚动<br>     输入  /a 全文查找a，按n、N切换跳转匹配项<br>     按q退出less模式</p>
+<p>######################################################<br>• head、tail 命令<br>– 格式:head -n 数字 文件名<br>      tail -n 数字 文件名</p>
+<p>[root@A /]#  head -3  /etc/passwd</p>
+<p>[root@A /]#  head -4   /etc/passwd<br>[root@A /]#  head -12  /etc/passwd</p>
+<p>[root@A /]#  tail  -3  /etc/passwd<br>[root@A /]#  tail    /etc/passwd     #默认显示10行</p>
+<p>#####################################################<br>• grep工具<br>– 用途:输出包含指定字符的行<br>– 格式:grep   ‘查找条件’      目标文件</p>
+<p>[root@A /]# grep  root  /etc/passwd</p>
+<p>[root@A /]# grep  bin   /etc/passwd</p>
+<p>[root@A /]# grep  bash  /etc/passwd</p>
+<p>##################################################<br>什么是命令?<br>• Linux命令<br>  – 用来实现某一类功能的指令或程序<br>   Linux执行命令，一般都要找到对应的程序进行运行</p>
+<pre><code>绿色：可以执行的程序
+</code></pre><p>  – 命令的执行依赖于解释器( 默认解释器：/bin/bash )</p>
+<pre><code>用户 --------&gt; 解释器 -------&gt; 内核 -------&gt; 硬件
+</code></pre><p>###################################################</p>
+<p>• Linux命令的分类<br>– 内部命令:属于解释器的一部分<br>– 外部命令:解释器之外的其他程序</p>
+<p>##################################################<br>• 基本用法<br>– 命令字    [选项]…   [参数1]     [参数2]…</p>
+<p>##################################################<br>• Tab键自动补全<br>– 可补齐命令字、选项、参数、文件路径、软件名、服务名<br>[root@A /]# if(连续两次tab)<br>[root@A /]# ifco(tab)<br>[root@A /]# cat  /et(tab)/red(tab)-r(tab)</p>
+<h1 id="ls-et-tab-sysco-tab-netw-tab-tab-ifc-tab-e-tab"><a href="#ls-et-tab-sysco-tab-netw-tab-tab-ifc-tab-e-tab" class="headerlink" title="ls /et(tab)/sysco(tab)/netw(tab)-(tab)/ifc(tab)-e(tab)"></a>ls /et(tab)/sysco(tab)/netw(tab)-(tab)/ifc(tab)-e(tab)</h1><p>[root@A /]#ho(tab)na(tab)</p>
+<p>#####################################################<br>• 快捷键<br>– Ctrl + c:废弃当前编辑的命令行,结束正在运行的命令<br>– Esc + . 或  Alt + . :粘贴上一个命令的参数</p>
+<p>[root@A /]# ls /etc/redhat-release </p>
+<p>[root@A /]# ls  -l  Alt + .</p>
+<p>[root@A /]# cat     Alt + .</p>
+<p>[root@A /]# cat -n  Alt + .</p>
+<p>– Ctrl + l:清空整个屏幕</p>
+<p>– Ctrl + u:清空至行首<br>– Ctrl + w:往回删除一个单词(以空格界定)</p>
+<p>######################################################<br>mount挂载操作<br>1.软件包可以通过互联网下载<br>2.从光盘中获得软件包</p>
+<p>  Windows系统：<br>      光盘 ——–&gt; 光驱设备 ——-&gt; CD驱动器（图标）访问点</p>
+<p>  Linux系统：在Linux系统中，访问设备资源必须通过访问点</p>
+<pre><code>光盘 ----------&gt; 光驱设备 -----------&gt; 访问点（目录）
+      /dev/cdrom 
+</code></pre><p>1.图形将光盘放入虚拟光驱设备<br>2.查看光驱设备<br>[root@A /]# ls /dev/cdrom<br>/dev/cdrom<br>[root@A /]# ls -l /dev/cdrom<br>lrwxrwxrwx. 1 root root 3 8月   2 11:03 /dev/cdrom -&gt; sr0</p>
+<p>  青色：快捷方式</p>
+<p>3.mount挂载：可以让一个目录成为访问点（挂载点）<br>• 使用mount命令<br>– 格式:mount   设备路径     挂载点目录</p>
+<p>[root@A ~]# mkdir  /dvd<br>[root@A ~]# ls  /<br>[root@A ~]# ls  /dvd</p>
+<p>[root@A ~]# mount  /dev/cdrom   /dvd</p>
+<p>[root@A ~]# ls /dvd/<br>[root@A ~]# ls /dvd/P(tab)</p>
+<p>4.卸载<br>[root@A ~]# umount   /dvd     #进行卸载<br>[root@A ~]# ls /dvd/</p>
+<p>[root@A ~]# mount   /dev/cdrom   /dvd<br>[root@A ~]# ls /dvd/</p>
+<p>####################################################<br>注意事项：<br>1.目录没有找到<br>[root@A ~]# mount /dev/cdrom  /nsd<br>mount: 挂载点 /nsd 不存在</p>
+<p>2.当前正在访问点路径下<br>[root@A dvd]# umount /dvd/<br>umount: /dvd：目标忙。<br>        (有些情况下通过 lsof(8) 或 fuser(1) 可以<br>         找到有关使用该设备的进程的有用信息)<br>[root@A dvd]# cd /<br>[root@A /]# umount /dvd/</p>
+<p>3.建议挂载点的选择，不要是根目录下已存在的目录，尽量自己创建目录</p>
+<p>######################################################<br>目录文件管理<br>cd — Change Directory<br>– 用途:切换工作目录<br>– 格式:cd [目标文件夹位置]</p>
+<pre><code>~user表示用户user的家目录
+   ～：用户的家目录
+</code></pre><p>   /root：系统管理员root的家目录<br>   /home：存放所有普通用户的家目录</p>
+<p>[root@A 桌面]# cd ~zhangsan<br>[root@A zhangsan]# pwd</p>
+<p>[root@A zhangsan]# useradd  lisi    #创建普通用户lisi<br>[root@A zhangsan]# useradd  harry   #创建普通用户harry<br>[root@A zhangsan]# useradd  dc      #创建普通用户dc<br>[root@A zhangsan]# useradd  tc      #创建普通用户tc<br>[root@A zhangsan]# cd  ~lisi<br>[root@A lisi]# pwd<br>[root@A lisi]# cd  ~harry<br>[root@A harry]# pwd<br>[root@A harry]# cd  ~dc<br>[root@A dc]# pwd</p>
+<p>  . 表示当前目录</p>
+<p>#################################################<br>如何查看命令的帮助信息<br>[root@A ~]# 命令    –help</p>
+<p>权威帮助手册<br>[root@A ~]# man  命令<br>  按 q 退出</p>
+<p>[root@A ~]# ls  –help</p>
+<p>[root@A ~]# man  ls<br>[root@A ~]# man  useradd<br>[root@A ~]# man  ifconfig<br>[root@A ~]# man  date</p>
+<p>#################################################<br>• ls — List<br>– 格式:ls [选项]… [目录或文件名]</p>
+<p>• 常用命令选项<br> – -l:以长格式显示,显示详细属性<br> – -h:提供易读的容量单位(K、M等)<br> – -d:显示目录本身(而不是内容)的属性<br> – -A:包括名称以 . 开头的隐藏文档</p>
+<p>[root@A ~]# ls -A /root/</p>
+<p>[root@A ~]# ls -l /boot<br>[root@A ~]# ls -lh /boot<br>[root@A ~]# ls -ld /boot</p>
+<p>[root@A ~]# ls -lA /root/</p>
+<p>###############################################<br>使用通配符<br>• 针对不确定的文档名称,以特殊字符表示<br> – *:任意多个任意字符<br> – ?:单个字符</p>
+<p>[root@A ~]# ls /boot/vm<em>     #列出以vm开头的文档<br>[root@A ~]# ls /etc/</em>tab     #列出以tab结尾的文档</p>
+<p>[root@A ~]# ls /dev/tty<em>     #列出以tty开头的文档<br>[root@A ~]# ls /etc/</em>.conf   #列出以.conf结尾的文档</p>
+<p>[root@A ~]# ls /dev/tty?     #列出tty后面只能有一个字符的<br>[root@A ~]# ls /dev/tty??    #列出tty后面只能有两个字符的</p>
+<p>  列出/etc/下以re开头并且以.conf结尾？<br>[root@A ~]# ls /etc/re*.conf</p>
+<p>– [a-z]:多个字符或连续范围中的一个,若无则忽略<br>– {a,min,xy}:多组不同的字符串,全匹配</p>
+<p>[root@A ~]# ls /dev/tty[3-8]<br>[root@A ~]# ls /dev/tty[1-5]</p>
+<p>[root@A ~]# ls /dev/tty{1,3,7,9,12,38,S0}<br>[root@A ~]# ls /dev/tty{1,3,5,7,9,11,S1}</p>
+<pre><code>列出/dev/tty20至/dev/tty30之间所有设备文件？
+</code></pre><p>[root@A ~]# ls  /dev/tty2[0-9]  /dev/tty30<br>[root@A ~]# ls  /dev/tty{2[0-9],30}</p>
+<p>#################################################<br>别名的定义：简化复杂的命令</p>
+<p>• 查看已设置的别名<br>– alias  [别名名称]</p>
+<p>• 定义新的别名<br>– alias  别名名称= ‘实际执行的命令行’</p>
+<p>• 取消已设置的别名<br>– unalias  [别名名称]</p>
+<p>[root@A ~]# alias hn=’hostname’    #定义别名<br>[root@A ~]# alias                  #显示当前正在生效的别名</p>
+<p>[root@A ~]# hn            #执行成功</p>
+<p>[root@A ~]# unalias hn    #删除别名<br>[root@A ~]# hn            #执行失败</p>
+<p>######################################################<br>  文档：目录和文件</p>
+<p>• mkdir — Make Directory<br>– 格式:mkdir [-p] [/路径/]目录名…</p>
+<pre><code>#-p表示连父目录
+</code></pre><p>[root@A ~]# mkdir -p  /vod/movie/cartoon<br>[root@A ~]# ls  /vod</p>
+<p>[root@A ~]# mkdir -p  /opt/aa/bb/cc/dd<br>[root@A ~]# ls  /opt/</p>
+<p>[root@A ~]# mkdir  /root/nsd01  /opt/nsd02<br>[root@A ~]# ls  /root<br>[root@A ~]# ls  /opt</p>
+<p>rm 删除<br>• rm — Remove<br>– 格式:rm  [选项]…  文件或目录…</p>
+<p>• 常用命令选项<br>  -r:递归删除(含目录)      递归:目录本身以及目录下所有<br>  -f:强制删除 </p>
+<p>[root@A ~]# touch  /opt/1.txt<br>[root@A ~]# mkdir  /opt/nsd01<br>[root@A ~]# mkdir  /opt/test<br>[root@A ~]# ls  /opt/<br>1.txt  nsd01  test<br>[root@A ~]# rm  -rf  /opt/1.txt   /opt/nsd01<br>[root@A ~]# ls /opt/<br>test<br>[root@A ~]# rm  -rf  /opt/test/<br>[root@A ~]# ls  /opt/</p>
+<p>#############################################<br>移动</p>
+<p>mv 移动/改名<br>• mv — Move<br>– 格式:mv    原文件…        目标路径</p>
+<p>[root@A ~]# rm  -rf  /opt/*<br>[root@A ~]# mkdir  /opt/nsd01<br>[root@A ~]# touch  /opt/1.txt<br>[root@A ~]# ls  /opt/</p>
+<p>[root@A ~]# mv  /opt/1.txt    /opt/nsd01<br>[root@A ~]# ls  /opt/</p>
+<p>[root@A ~]# ls  /opt/nsd01/</p>
+<p>重命名：路径不变的移动</p>
+<p>[root@A ~]# mv /opt/nsd01  /opt/student<br>[root@A ~]# ls /opt/</p>
+<p>[root@A ~]# mv /opt/student/  /opt/nsd<br>[root@A ~]# ls /opt/</p>
+<p>[root@A ~]# mkdir /opt/pub<br>[root@A ~]# ls /opt/</p>
+<p>[root@A ~]# mv /opt/pub  /opt/test<br>[root@A ~]# ls /opt/</p>
+<p>##################################################<br>cp 复制<br>• cp — Copy<br>– 格式:cp [选项]… 原文件…   目标路径</p>
+<p>• 常用命令选项<br>– -r:递归,复制目录时必须有此选项</p>
+<p>[root@A ~]# rm -rf /opt/*<br>[root@A ~]# ls /opt/<br>[root@A ~]# cp /etc/passwd   /opt/<br>[root@A ~]# ls /opt/</p>
+<p>[root@A ~]# cp /etc/redhat-release  /opt/<br>[root@A ~]# ls /opt/</p>
+<p>[root@A ~]# cp /boot/   /opt/<br>cp: 略过目录”/boot/“<br>[root@A ~]# ls /opt/</p>
+<p>[root@A ~]# cp -r /boot/  /opt/<br>[root@A ~]# ls /opt/</p>
+<p>[root@A ~]# ls /opt/boot/</p>
+<p>###################################################<br>1.解决复制时出现重复<br>  在本次操作，临时取消别名的定义</p>
+<p>[root@A ~]# cp  -r  /boot/  /opt/<br>[root@A ~]# cp  -r  /boot/  /opt/</p>
+<p>[root@A ~]# \cp  -r  /boot/  /opt/</p>
+<p>2.复制可以支持两个以上的参数<br>   永远把最后一个参数作为目标，其他的所有参数都做为源文档</p>
+<p>[root@A ~]# cp /etc/fstab /etc/shadow  /opt/<br>[root@A ~]# ls /opt/</p>
+<p>3.复制与   .    连用<br>[root@A ~]# cd /opt<br>[root@A opt]# cp  -r  /root    .    #将/root复制到当前路径下</p>
+<p>[root@A ~]# cd /etc/sysconfig/network-scripts/<br>[root@A network-scripts]# cp  /etc/passwd    .</p>
+<p>4.复制时可以重新命名，目标路径文件名<br>[root@A /]# cp /etc/redhat-release  /opt/abc<br>[root@A /]# ls /opt/</p>
+<p>[root@A /]# cp -r /mnt/  /opt/haha<br>[root@A /]# ls /opt/</p>
+<p>[root@A /]# rm -rf /opt/*           #清空/opt目录内容<br>[root@A /]# cp -r /mnt/  /opt/test  #将/mnt放入/opt命名为test<br>[root@A /]# ls /opt<br>[root@A /]# ls /opt/test<br>[root@A /]# cp -r /mnt/  /opt/test  </p>
+<pre><code>#将/mnt放入/opt/test目录下
+</code></pre><p>[root@A /]# ls /opt<br>[root@A /]# ls /opt/test</p>
+<p>######################################################<br>使用vim创建/修改文件<br>• vim文本编辑器<br>– 格式:vim [[/目录/]文件名]</p>
+<p>– 若目标文件不存在,则新建空文件并编辑<br>– 若目标文件已存在,则打开此文件并编辑</p>
+<p>vim模式：命令模式    输入模式(插入模式  编辑模式)    末行模式</p>
+<p>[root@A /]# vim  /opt/haxi.txt</p>
+<pre><code>      i 键
+命---------------------&gt;输入模式(按Esc 键 回到命令模式)
+令
+模
+式---------------------&gt;末行模式(按Esc 键 回到命令模式)
+                  : 键
+
+末行模式  ：wq    保存并退出
+末行模式  ：q！   强制不保存并退出
+</code></pre><p>[root@A /]# cat  /opt/haxi.txt</p>
+<p>##################################################</p>
+</div><div style="padding-bottom: 10px;"><ul class="post-copyright">
+<li class="post-copyright-author">
+<strong>本文作者：</strong><a href="/about/">潇九九</a></li><li class="post-copyright-link">
+<strong>本文链接：</strong><a href="http://yoursite.com/2018/10/20/ADMIN/DAY3/Admin03/">http://yoursite.com/2018/10/20/ADMIN/DAY3/Admin03/</a></li><li class="post-copyright-license"><strong>版权声明：</strong><a href="/site/">本文所有权归博主所有，转载请注明署名、出处！Thanks</a></li></ul></div><script type="text/javascript" charset="utf-8" src="https://static.bshare.cn/b/buttonLite.js#uuid=2aceecbb-21d7-4746-a9db-3f8da046a833&amp;style=10&amp;bgcolor=Grey&amp;bp=sinaminiblog,qqim,qzone,weixin&amp;ssc=false"></script><div style="float:right;"><a class="bshareDiv" href="www.bshare.cn/share">分享按钮</a></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/10/20/ADMIN/DAY3/Exec03/"></a><a class="next" href="/2018/10/20/ADMIN/DAY3/ADMIN-Study02/"></a></div></div></div></div></div></div><div id="footer-000"><div class="footer-02"><div style="max-width:1150px;margin:0 auto;height:200px;"><div class="footer-div-a" id="123" style="display:flex"><div class="footer-div-b" style="height:120px;"><div style="text-align:left;padding-top:20px;padding-bottom:5px;"></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weixin" aria-hidden="true"></i> <a href="https://huanfan-1252958858.cos.ap-shanghai.myqcloud.com/pic/302701117226241178.jpg" title="微信" target="_Blank"> hyaini</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weibo" aria-hidden="true"></i><a title="微博" target="_Blank"> 萧萧</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-qq" aria-hidden="true"></i><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1102144757&amp;site=qq&amp;menu=yes" title="QQ" target="_Blank"> 1102144757</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=ZBwNBQsIDAkkAgscCQUNCEoHCwk" title="邮件" target="_Blank"> xiaolhm@foxmail.com</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-map-marker" aria-hidden="true"></i><a href="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;s=s%26wd%3D%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E5%94%90%E9%95%87%E6%9D%A5%E5%AE%89%E8%B7%AF%E5%85%B4%E4%B8%9A%E9%93%B6%E8%A1%8C%28%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%29" title="地址" target="_Blank">  Pudong New Area, Chengdu, China</a></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:autopadding-top:20px;padding-bottom:5px;"><div style="padding-top:20px;padding-bottom:20px;"><img heigth="150px" width="150px" src="/img/gongzhonghao.jpg"></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"> </div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"><h3><a href="/href/">友情链接</a></h3><h3><a href="/site/">关于本站</a></h3><h3><a href="/about/">关于博主</a></h3></div></div></div></div></div><div id="footer-01" style="text-align:center;margin:auto;font-size:14px;background-color:#f5f5f5;"><div class="footer-div-a" style="max-width:1150px;display:flex;margin:0 auto"><div class="footer-div-b" style="padding-left:10px;padding-top:7px;padding-bottom:7px;text-align: left;"><a rel="nofollow">©2018  ❤ </a><a href="/." rel="nofollow" font-size="14px" font-weight="bold">故事，这里有</a></div><div class="footer-div-b" style="padding-right:10px;padding-top:15px;padding-bottom:7px;text-align: right;"><a href="https://tongji.baidu.com/web/25553450/overview/index?siteId=11976031" target="_Blank" title="百度统计"><img class="nofancybox" width="40px" height="15px" src="/img/baidu.png"></a><a>&emsp;</a><a href="https://github.com/HLQ1102/" target="_Blank" title="github" style="font-size:19px;"><i class="fa fa-github" aria-hidden="true"></i></a><a>&emsp;</a><a href="https://gitee.com/iyohei" target="_Blank" title="码云"><img class="nofancybox" width="15px" height="15px" src="/img/gitee.ico"></a></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.1.0" async></script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.1.0" async></script><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.1.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.1.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.1.0"></script></div></div></html><script type="text/javascript" src="/js/zidingyi.js" async></script>

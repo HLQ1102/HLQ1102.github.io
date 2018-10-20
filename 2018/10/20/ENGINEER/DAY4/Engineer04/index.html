@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title> | 故事，这里有</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.1.0"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script type="text/javascript" src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script type="text/javascript" src="https://news.qq.com/newsweather/showWeather.js"></script><script src="//msite.baidu.com/sdk/c.js?appid=1603347506741536"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body></body><div class="search-total"><div class="search-quanbu"></div><div class="showSerch"><div class="div serach-span"><a href="#" onclick="outSerch()">关闭&nbsp;&nbsp;&nbsp;</a><br><br></div><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="回车键开启搜索" type="text" name="q" results="0"><br><div id="local-search-result"></div></div></div></div></div><div class="header-02" id="header-02"><div class="header-02-1"><div class="nav2" id="nav1"><div class="header-02-2"><span class="logo-line-before"><i></i></span><a href="/.">故事，这里有</a><span class="logo-line-before"><i></i></span></div><div class="header-02-3"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a></div><div class="header-03"><div class="header-02-5" onclick="showBars()"> <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></div><div class="header-02-4"> <a onclick="showSerch()" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div><div class="header-02-6"> <a href="/."><i class="fa fa-home" aria-hidden="true"></i></a></div></div></div></div></div><div class="header-04" id="header-04" style="display: none;"> <div class="nav2"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a><a href="/about/"><i class="fa fa-rss2"> 关于博主</i></a><a href="/site/"><i class="fa fa-rss2"> 关于本站</i></a><a href="/href/"><i class="fa fa-rss2"> 友情链接</i></a></div></div><div class="body_container"><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4" style="width: 100%;"><div class="content_container"><div class="post-02"></div><div class="post"><h1 class="post-title"><a href="/"></a></h1><div class="post-meta"><a href="https://ziyuan.baidu.com/xzh/commit/method?appid=1603347506741536" target="_Blank">10-20</a><span class="leancloud_visitors" id="/2018/10/20/ENGINEER/DAY4/Engineer04/" data-flag-title="文章阅读量统计">&nbsp;| <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span class="leancloud-visitors-count"></span><span> 阅读</span></span><span>&nbsp;|&nbsp;<i class="fa fa-keyboard-o"></i>&nbsp;<span class="post-count">2.3k 字 </span></span></div><br><br><div class="post-content"><p>一、真机上，还原三台虚拟机环境<br>[root@room9pc01 ~]# rht-vmctl  reset classroom<br>[root@room9pc01 ~]# rht-vmctl  reset server<br>[root@room9pc01 ~]# rht-vmctl  reset desktop</p>
+<p>[root@room9pc01 ~]# gos          #远程管理</p>
+<p>[root@server0 ~]# yum  clean  all     #清空Yum缓存<br>[root@server0 ~]# yum  repolist       #显示Yum仓库信息</p>
+<p>源标识        源名称                            状态<br>rhel_dvd      Remote classroom copy of dvd      4,305<br>repolist: 4,305</p>
+<p>二、环境的准备，设置防火墙默认区域为trusted（允许所有访问）<br>虚拟机Server0<br>[root@server0 ~]# firewall-cmd –set-default-zone=trusted<br>虚拟机Desktop0<br>[root@desktop0 ~]# firewall-cmd –set-default-zone=trusted </p>
+<p>######################################################<br>互联网中常见协议：<br>           http:超文本传输协议     默认端口:80<br>           https：安全的超文本传输协议  默认端口:443<br>           ftp:文件传输协议         默认端口:21<br>           tftp:简单的文件传输协议  默认端口:69<br>           dns：域名解析协议   默认端口:53<br>           smtp：发邮件协议    默认端口:25<br>           pop3：收邮件协议    默认端口:110</p>
+<pre><code>snmp：网络管理协议   默认端口:161
+telnet:远程管理协议  默认端口:23
+</code></pre><p>#####################################################</p>
+<p>互联网怎样找到另一台主机：通过IP地址</p>
+<p>如何找到主机上相应的程序：端口</p>
+<p>   端口：标识服务或程序，编号<br>         允许改变端口号，也允许一个服务或程序具备多个端口</p>
+<p> 数据包：源IP地址、目标IP地址、数据、端口</p>
+<p>##########################################################<br>案例3：自定义用户环境<br>为系统 server0  创建自定义命令<br>  1）自定义命令的名称为 qstat<br>  2）此自定义命令将执行以下操作： /bin/ps -Ao pid,tt,user,fname,rsz<br>  3）此自定义命令对系统中的所有用户都有</p>
+<p>案例4：Shell脚本<br>为系统 server0 书写脚本/root/user.sh<br>运行脚本，可以判断用户输入的用户是否存在<br>如果存在，输出用户基本信息（id  用户名）<br>如果用户，不存在则创建用户，并输出用户创建成功</p>
+<p>[root@server0 ~]# cat /root/user.sh </p>
+<p>#!/bin/bash<br>read -p ‘请输入您要测试的用户名:’  user<br>id $user &amp;&gt; /dev/null<br>if [ $? -eq 0 ];then<br> echo $user已存在<br> id $user<br>else<br> useradd $user<br> echo $user 创建成功<br>fi<br>[root@server0 ~]# </p>
+<p>[root@server0 ~]# cat /root/user.sh</p>
+<p>#!/bin/bash<br>read -p   ‘请输入您要测试的用户名:’    user<br>useradd  $user &amp;&gt; /dev/null<br>if [ $?  -eq  0  ];then<br> echo $user创建成功<br>else<br> echo $user 已存在<br> id $user<br>fi<br>[root@server0 ~]#</p>
+<p>######################################################<br>Samba服务基础，配置SMB共享（Windows与Linux跨平台的共享）</p>
+<p>– 用途:为客户机提供共享使用的文件夹<br>– 协议:SMB(TCP 139)验证、CIFS(TCP 445)传输数据</p>
+<p>• 所需软件包:samba<br>• 系统服务:smb</p>
+<p>• Samba用户 —— 专用来访问共享文件夹的用户<br>– 但需要提前建立同名的系统用户<br>– 采用独立设置的密码与系统登陆密码不同</p>
+<p> pdbedit -x harry   #删除samba共享帐号harry</p>
+<p>• 修改 /etc/samba/smb.conf<br>[自定共享名]<br>path = 文件夹绝对路径<br>; public = no|yes //默认no<br>; browseable = yes|no //默认yes<br>; read only = yes|no //默认yes<br>; write list = 用户1 .. .. //默认无<br>; valid users = 用户1 .. .. //默认任何用户<br>; hosts allow = 客户机地址 .. ..<br>; hosts deny = 客户机地址 .. ..</p>
+<p>一、搭建基本的samba共享服务<br>虚拟机Server0：<br>1.安装软件包samba<br>2.建立samba共享帐号，专用于验证samba共享服务用户名<br>[root@server0 ~]# useradd -s /sbin/nologin harry<br>[root@server0 ~]# useradd -s /sbin/nologin kenji<br>[root@server0 ~]# useradd -s /sbin/nologin chihiro</p>
+<p>[root@server0 ~]# pdbedit -a harry   #添加为samba共享帐号<br>[root@server0 ~]# pdbedit -a kenji<br>[root@server0 ~]# pdbedit -a chihiro<br>[root@server0 ~]# pdbedit -L         #列出所有的samba共享帐号</p>
+<p>3.发布目录 /common,共享名为 common</p>
+<p>[root@server0 ~]# mkdir /common<br>[root@server0 ~]# echo haha &gt; /common/1.txt<br>[root@server0 ~]# ls /common</p>
+<p>[root@server0 ~]# vim /etc/samba/smb.conf  #按G(大写)到最后\</p>
+<p>1)此服务器必须是 STAFF 工作组的一个成员<br>        workgroup = STAFF</p>
+<p>[common]<br>  path = /common</p>
+<p>4.重起smb服务<br>[root@server0 ~]# systemctl restart smb<br>[root@server0 ~]# systemctl enable smb<br>ln -s ‘/usr/lib/systemd/system/smb.service’ ‘/etc/systemd/system/multi-user.target.wants/smb.service’</p>
+<p>5.SELinux的 布尔值（功能的开关  on与off）<br>  – 需要加 -P 选项才能实现永久设置</p>
+<h1 id="getsebool-a-grep-samba-查看SELinux布尔值"><a href="#getsebool-a-grep-samba-查看SELinux布尔值" class="headerlink" title="getsebool -a | grep samba          #查看SELinux布尔值"></a>getsebool -a | grep samba          #查看SELinux布尔值</h1><h1 id="setsebool-samba-export-all-ro-on-修改SELinux布尔值"><a href="#setsebool-samba-export-all-ro-on-修改SELinux布尔值" class="headerlink" title="setsebool  samba_export_all_ro on  #修改SELinux布尔值"></a>setsebool  samba_export_all_ro on  #修改SELinux布尔值</h1><h1 id="getsebool-a-grep-samba"><a href="#getsebool-a-grep-samba" class="headerlink" title="getsebool -a | grep samba"></a>getsebool -a | grep samba</h1><p>#######################################################<br>客户端：虚拟机Desktop0</p>
+<p>1.所需软件包:samba-client访问服务端共享<br>2.显示服务端共享内容<br>[root@desktop0 ~]# smbclient -L //172.25.0.11<br>3.访问共享<br>[root@desktop0 ~]# smbclient -U harry //172.25.0.11/common<br>Enter harry’s password:<br>Domain=[STAFF] OS=[Unix] Server=[Samba 4.1.1]<br>smb: > ls<br>NT_STATUS_ACCESS_DENIED listing *   #权限不足<br>smb: > </p>
+<p>######################################################</p>
+<p>更加科学方便的方式访问samba共享:挂载</p>
+<p>1.安装软件包cifs-utils(支持cifs传输协议)<br>2.进行挂载<br>[root@desktop0 ~]# mkdir /mnt/nsd01<br>[root@desktop0 ~]# ls /mnt/nsd01</p>
+<h1 id="mount-o-user-harry-pass-123-172-25-0-11-common-mnt-nsd01"><a href="#mount-o-user-harry-pass-123-172-25-0-11-common-mnt-nsd01" class="headerlink" title="mount -o user=harry,pass=123 //172.25.0.11/common /mnt/nsd01/"></a>mount -o user=harry,pass=123 //172.25.0.11/common /mnt/nsd01/</h1><p>[root@desktop0 ~]# df  -h<br>[root@desktop0 ~]# ls  /mnt/nsd01</p>
+<p>3.开机自动挂载/etc/fstab</p>
+<pre><code>_netdev:网络设备
+   在开机启动时，挂载带有_netdev参数的设备，需要首先将网络服务部署完成，配置好所有网络参数，在挂载本设备
+</code></pre><p>[root@desktop0 ~]# vim /etc/fstab </p>
+<p> //172.25.0.11/common  /mnt/nsd01   cifs<br>  defaults,user=harry,pass=123,_netdev  0   0</p>
+<p>[root@desktop0 ~]# df -h<br>[root@desktop0 ~]# umount /mnt/nsd01<br>[root@desktop0 ~]# df -h<br>[root@desktop0 ~]# mount -a     #验证是否书写正确<br>[root@desktop0 ~]# df -h</p>
+<p>######################################################<br>读写的samba共享</p>
+<p>虚拟机Server0：</p>
+<p>1.发布目录 /devops,共享名为 devops<br>[root@server0 ~]# mkdir  /devops<br>[root@server0 ~]# echo 123  &gt;  /devops/a.txt<br>[root@server0 ~]# ls  /devops/</p>
+<p>[root@server0 ~]# vim /etc/samba/smb.conf<br>[devops]<br>  path = /devops<br>  write list = chihiro    #服务配置允许chihiro可以写</p>
+<p>2.重起smb服务<br>[root@server0 ~]# systemctl restart smb</p>
+<p>3.修改SELinux布尔值<br>[root@server0 ~]# getsebool -a | grep samba<br>[root@server0 ~]# setsebool samba_export_all_rw on<br>[root@server0 ~]# getsebool -a | grep samba</p>
+<p>4.设置本机目录的基本的权限<br>[root@server0 ~]# setfacl -m u:chihiro:rwx /devops/<br>[root@server0 ~]# getfacl /devops/</p>
+<p>客户端：虚拟机desktop0</p>
+<p>1.书写配置文件完成开机自动挂载<br>[root@desktop0 ~]# vim /etc/fstab<br>  //172.25.0.11/devops /mnt/nsd02  cifs<br>  defaults,user=chihiro,pass=123,_netdev 0 0</p>
+<p> No such file or directory:没有文件或目录</p>
+<p>[root@desktop0 ~]# mkdir /mnt/nsd02<br>[root@desktop0 ~]# mount -a<br>[root@desktop0 ~]# df -h<br>[root@desktop0 ~]# touch /mnt/nsd02/test.txt</p>
+<p>##################################################<br>总结：客户端访问服务端影响的方面<br>             1.防火墙<br>       2.SELinux<br>             3.服务本身的策略<br>             4.服务端本地目录的权限</p>
+<p>###################################################<br>服务端:请在虚拟机Server0<br> 1.利用samba设置共享，目录为/nsd1807,发布共享名为 test<br> 2.实现harry用户对该共享拥有可读写的权限<br>[root@server0 ~]# mkdir /nsd1807<br>[root@server0 ~]# echo 123 &gt; /nsd1807/abc.txt<br>[root@server0 ~]# ls /nsd1807/<br>[root@server0 ~]# vim /etc/samba/smb.conf<br>[test]<br>  path = /nsd1807<br>  write list = harry<br>[root@server0 ~]# setfacl -m u:harry:rwx /nsd1807/<br>[root@server0 ~]# getfacl /nsd1807/<br>[root@server0 ~]# systemctl restart smb</p>
+<p>客户端： 请在虚拟机desktop0<br> 1.实现该共享开机自动挂载到/mnt/pub<br>//172.25.0.11/test /mnt/pub cifs defaults,user=harry,pass=123,_netdev 0 0</p>
+<p>###################################################<br>服务端:请在虚拟机Server0<br> 1.利用samba设置共享，目录为/public,发布共享名为nb<br> 2.实现kenji用户对该共享拥有可读写的权限<br>[root@server0 ~]# mkdir /public<br>[root@server0 ~]# echo haha &gt; /public/xixi.txt<br>[root@server0 ~]# ls /public/<br>[root@server0 ~]# vim /etc/samba/smb.conf<br>[nb]<br>  path = /public<br>  write list = kenji<br>[root@server0 ~]# systemctl restart smb<br>[root@server0 ~]# setfacl -m u:kenji:rwx /public/<br>[root@server0 ~]# getfacl /public/</p>
+<p>客户端： 请在虚拟机desktop0<br> 1.实现该共享开机自动挂载到/mnt/nsd03<br>//172.25.0.11/nb /mnt/nsd03  cifs defaults,user=kenji,pass=123,_netdev 0 0</p>
+<p>######################################################<br>multiuser机制(了解)</p>
+<p>  在客户端实现samba挂载时，采用权限较小用户验证，必要时可以切换成权限较大的用户身份</p>
+<p>– multiuser,提供对客户端多个用户身份的区分支持<br>– sec=ntlmssp,提供NT局域网管理安全支持</p>
+<p>客户端：虚拟机desktop0</p>
+<p>[root@desktop0 ~]# vim /etc/fstab</p>
+<p>//172.25.0.11/devops /mnt/nsd02  cifs defaults,user=kenji,pass=123,_netdev,multiuser,sec=ntlmssp 0 0</p>
+<p>[root@desktop0 ~]# umount /mnt/nsd02<br>[root@desktop0 ~]# mount -a<br>[root@desktop0 ~]# su - student<br>[student@desktop0 ~]$ cifscreds add -u chihiro 172.25.0.11<br>Password: </p>
+<p>[student@desktop0 ~]$ exit</p>
+<p>#######################################################<br> 配置NFS共享（Linux与Linux之间的共享）</p>
+<p>• Network File System,网络文件系统<br> – 用途:为客户机提供共享使用的文件夹<br> – 协议:NFS(TCP/UDP 2049)、RPC(TCP/UDP 111)</p>
+<p>• 所需软件包:nfs-utils<br>• 系统服务:nfs-server</p>
+<p>虚拟机server0<br>1.安装软件nfs-utils<br>[root@server0 ~]# yum -y install nfs-utils<br>[root@server0 ~]# rpm -q nfs-utils</p>
+<p>2.发布共享 /abc<br>[root@server0 ~]# mkdir /abc<br>[root@server0 ~]# echo 123 &gt; /abc/123.txt<br>[root@server0 ~]# ls /abc/<br>[root@server0 ~]# vim /etc/exports<br>• 修改 /etc/exports<br>– 文件夹路径    客户机地址(权限) </p>
+<p>   /abc       *(ro)</p>
+<p>3.重起nfs-server服务<br>[root@server0 ~]# systemctl restart nfs-server<br>[root@server0 ~]# systemctl enable nfs-server</p>
+<p>客户端虚拟机desktop0</p>
+<p>[root@desktop0 ~]# vim  /etc/fstab<br>172.25.0.11:/abc  /mnt/nfs   nfs   defaults,_netdev 0 0</p>
+<p>[root@desktop0 ~]# mount -a<br>mount.nfs: mount point /mnt/nfs does not exist<br>[root@desktop0 ~]# mkdir /mnt/nfs<br>[root@desktop0 ~]# mount -a<br>[root@desktop0 ~]# df -h</p>
+<p>#####################################################<br>配置IPv6地址</p>
+<p>IPv4地址:32个二进制组成,以 点 分隔 4 部分,最终用4个十进制表示</p>
+<p>IPv6地址:128个二进制组成,以 冒号 分隔 8 部分,每部分由 4个16进制数表示</p>
+<p>– 每段内连续的前置 0 可省略、连续的多个 : 可简化为 ::<br>– 例如: 2003:ac18:0000:0000:0000:0000:0000:0305<br>      2003:ac18::305/64</p>
+<p>为两个虚拟机的接口 eth0 配置下列 IPv6 地址<br>– server0 上的地址应该是 2003:ac18::305/64</p>
+<p>[root@server0 ~]# nmcli connection modify ‘System eth0’<br>  ipv6.method manual ipv6.addresses 2003:ac18::305/64<br>  connection.autoconnect yes</p>
+<p>[root@server0 ~]# nmcli connection up ‘System eth0’</p>
+<p>[root@server0 ~]# ifconfig | head -4</p>
+<p>[root@server0 ~]# ping6  2003:ac18::305</p>
+<p>###################################################<br>环境变量:<br>   PATH :为执行命令时，提供搜寻路径（在搜寻命令程序文件位置）</p>
+<p>[root@server0 /]# vim /opt/hello.sh </p>
+<p>#!/bin/bash<br>echo hello world<br>[root@server0 /]# chmod +x /opt/hello.sh<br>[root@server0 /]# /opt/hello.sh</p>
+<p>[root@server0 /]# hello.sh   #运行失败</p>
+<p>[root@server0 /]# echo $PATH<br>[root@server0 /]# cp /opt/hello.sh  /usr/bin</p>
+<p>[root@server0 /]# hello.sh   #运行成功</p>
+<p>###################################################</p>
+</div><div style="padding-bottom: 10px;"><ul class="post-copyright">
+<li class="post-copyright-author">
+<strong>本文作者：</strong><a href="/about/">潇九九</a></li><li class="post-copyright-link">
+<strong>本文链接：</strong><a href="http://yoursite.com/2018/10/20/ENGINEER/DAY4/Engineer04/">http://yoursite.com/2018/10/20/ENGINEER/DAY4/Engineer04/</a></li><li class="post-copyright-license"><strong>版权声明：</strong><a href="/site/">本文所有权归博主所有，转载请注明署名、出处！Thanks</a></li></ul></div><script type="text/javascript" charset="utf-8" src="https://static.bshare.cn/b/buttonLite.js#uuid=2aceecbb-21d7-4746-a9db-3f8da046a833&amp;style=10&amp;bgcolor=Grey&amp;bp=sinaminiblog,qqim,qzone,weixin&amp;ssc=false"></script><div style="float:right;"><a class="bshareDiv" href="www.bshare.cn/share">分享按钮</a></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/10/20/ENGINEER/DAY5/Engineer-Study04/"></a><a class="next" href="/2018/10/20/ENGINEER/DAY4/Engineer-Exec04/"></a></div></div></div></div></div></div><div id="footer-000"><div class="footer-02"><div style="max-width:1150px;margin:0 auto;height:200px;"><div class="footer-div-a" id="123" style="display:flex"><div class="footer-div-b" style="height:120px;"><div style="text-align:left;padding-top:20px;padding-bottom:5px;"></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weixin" aria-hidden="true"></i> <a href="https://huanfan-1252958858.cos.ap-shanghai.myqcloud.com/pic/302701117226241178.jpg" title="微信" target="_Blank"> hyaini</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weibo" aria-hidden="true"></i><a title="微博" target="_Blank"> 萧萧</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-qq" aria-hidden="true"></i><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1102144757&amp;site=qq&amp;menu=yes" title="QQ" target="_Blank"> 1102144757</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=ZBwNBQsIDAkkAgscCQUNCEoHCwk" title="邮件" target="_Blank"> xiaolhm@foxmail.com</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-map-marker" aria-hidden="true"></i><a href="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;s=s%26wd%3D%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E5%94%90%E9%95%87%E6%9D%A5%E5%AE%89%E8%B7%AF%E5%85%B4%E4%B8%9A%E9%93%B6%E8%A1%8C%28%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%29" title="地址" target="_Blank">  Pudong New Area, Chengdu, China</a></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:autopadding-top:20px;padding-bottom:5px;"><div style="padding-top:20px;padding-bottom:20px;"><img heigth="150px" width="150px" src="/img/gongzhonghao.jpg"></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"> </div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"><h3><a href="/href/">友情链接</a></h3><h3><a href="/site/">关于本站</a></h3><h3><a href="/about/">关于博主</a></h3></div></div></div></div></div><div id="footer-01" style="text-align:center;margin:auto;font-size:14px;background-color:#f5f5f5;"><div class="footer-div-a" style="max-width:1150px;display:flex;margin:0 auto"><div class="footer-div-b" style="padding-left:10px;padding-top:7px;padding-bottom:7px;text-align: left;"><a rel="nofollow">©2018  ❤ </a><a href="/." rel="nofollow" font-size="14px" font-weight="bold">故事，这里有</a></div><div class="footer-div-b" style="padding-right:10px;padding-top:15px;padding-bottom:7px;text-align: right;"><a href="https://tongji.baidu.com/web/25553450/overview/index?siteId=11976031" target="_Blank" title="百度统计"><img class="nofancybox" width="40px" height="15px" src="/img/baidu.png"></a><a>&emsp;</a><a href="https://github.com/HLQ1102/" target="_Blank" title="github" style="font-size:19px;"><i class="fa fa-github" aria-hidden="true"></i></a><a>&emsp;</a><a href="https://gitee.com/iyohei" target="_Blank" title="码云"><img class="nofancybox" width="15px" height="15px" src="/img/gitee.ico"></a></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.1.0" async></script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.1.0" async></script><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.1.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.1.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.1.0"></script></div></div></html><script type="text/javascript" src="/js/zidingyi.js" async></script>

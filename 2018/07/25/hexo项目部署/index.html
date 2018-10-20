@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>hexo简单项目部署 | 故事，这里有</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.1.0"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script type="text/javascript" src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script type="text/javascript" src="https://news.qq.com/newsweather/showWeather.js"></script><script src="//msite.baidu.com/sdk/c.js?appid=1603347506741536"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body></body><div class="search-total"><div class="search-quanbu"></div><div class="showSerch"><div class="div serach-span"><a href="#" onclick="outSerch()">关闭&nbsp;&nbsp;&nbsp;</a><br><br></div><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="回车键开启搜索" type="text" name="q" results="0"><br><div id="local-search-result"></div></div></div></div></div><div class="header-02" id="header-02"><div class="header-02-1"><div class="nav2" id="nav1"><div class="header-02-2"><span class="logo-line-before"><i></i></span><a href="/.">故事，这里有</a><span class="logo-line-before"><i></i></span></div><div class="header-02-3"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a></div><div class="header-03"><div class="header-02-5" onclick="showBars()"> <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></div><div class="header-02-4"> <a onclick="showSerch()" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div><div class="header-02-6"> <a href="/."><i class="fa fa-home" aria-hidden="true"></i></a></div></div></div></div></div><div class="header-04" id="header-04" style="display: none;"> <div class="nav2"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a><a href="/about/"><i class="fa fa-rss2"> 关于博主</i></a><a href="/site/"><i class="fa fa-rss2"> 关于本站</i></a><a href="/href/"><i class="fa fa-rss2"> 友情链接</i></a></div></div><div class="body_container"><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4" style="width: 100%;"><div class="content_container"><div class="post-02"></div><div class="post"><h1 class="post-title"><a href="/">hexo简单项目部署</a></h1><div class="post-meta"><a href="https://ziyuan.baidu.com/xzh/commit/method?appid=1603347506741536" target="_Blank">07-25</a><span class="leancloud_visitors" id="/2018/07/25/hexo项目部署/" data-flag-title="文章阅读量统计">&nbsp;| <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span class="leancloud-visitors-count"></span><span> 阅读</span></span><span>&nbsp;|&nbsp;<i class="fa fa-keyboard-o"></i>&nbsp;<span class="post-count">707 字 </span></span></div><br><br><div class="post-content"><h1 id="github相关设置"><a href="#github相关设置" class="headerlink" title="github相关设置"></a>github相关设置</h1><h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><p>安装包见群文件</p>
+<h2 id="新建ssh-key"><a href="#新建ssh-key" class="headerlink" title="新建ssh key"></a>新建ssh key</h2><ol>
+<li>在桌面右键选择git bash here</li>
+<li>创建本地ssh key,输入如下命令:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>回车，然后记录下ssh的默认保存路径，</p>
+<ol start="3">
+<li>后续一路回车，直到出现很多泡沫</li>
+<li>打开ssh默认保存路径，找到id_rsa.pub文件，复制里面的内容备用</li>
+</ol>
+<h2 id="注册github"><a href="#注册github" class="headerlink" title="注册github"></a>注册github</h2><ol>
+<li>打开<a href="https://www.github.com" target="_blank" rel="noopener">github</a>点击右上角sign up注册个人账号</li>
+<li>点击头像右侧倒三角，选择settings按钮</li>
+<li>选择左侧ssh and gpk keys</li>
+<li>点击右侧 添加ssh key按钮<br>title随意，下方粘贴创建好的ssh key</li>
+<li>点击下方create ssh按钮</li>
+</ol>
+<h2 id="验证ssh-key"><a href="#验证ssh-key" class="headerlink" title="验证ssh key"></a>验证ssh key</h2><ol>
+<li>命令行输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>回车，如果是第一次的会提示是否continue，输入yes就会看到：You’ve successfully 就表示已成功连上github</p>
+<ol start="2">
+<li><p>验证github用户名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证邮箱</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="测试github本地连接"><a href="#测试github本地连接" class="headerlink" title="测试github本地连接"></a>测试github本地连接</h2><ol>
+<li>点击github主页头像左侧+，选择new repository</li>
+<li>创建一个仓库，取名随意，比如:abc</li>
+<li><p>创建成功后，复制提示代码,如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;# abc&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@github.com:NicolasGui/abc.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在桌面创建任意文件夹，并打开</p>
+</li>
+<li>右键git bash here</li>
+<li>右键past刚才复制的代码回车</li>
+<li>弹出框内根据提示登录github账号</li>
+<li>个别情况下需要在命令行窗口验证github用户名</li>
+<li>刷新github的abc仓库，如果本地文件存在，证明连接无误<br>否则删除文件夹内所有文件，重复步骤4~8<h1 id="推送本地博客到github"><a href="#推送本地博客到github" class="headerlink" title="推送本地博客到github"></a>推送本地博客到github</h1><h2 id="配置hexo的-config-yml文件"><a href="#配置hexo的-config-yml文件" class="headerlink" title="配置hexo的_config.yml文件"></a>配置hexo的_config.yml文件</h2></li>
+<li>打开博客项目根目录的_config.yml文件</li>
+<li>在文件底部配置如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/用户名/用户名.github.io</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>并且保存</p>
+<ol start="3">
+<li><p>安装deploy依赖包（仅需操作一次）<br>在blog所在路径输入如下命令回车</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加域名解析文件<br>在vscode工具里面，选中根目录的source文件，右键选择新建文件(new file)，取名为CNAME ,不带后缀名,打开该文件，填入自己的域名，不带www也不带http，如:baidu.com保存即可</p>
+</li>
+<li><p>在blog所在路径依次输入如下命令<br>清除缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>编译博客文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></p>
+<p>上传代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><ol>
+<li>打开阿里云域名控制中心</li>
+<li>选中自己购买的域名，点击右侧解析</li>
+<li>删除已有的解析记录值</li>
+<li>点击新建解析按钮添加三条记录值</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>记录类型</th>
+<th>主机记录</th>
+<th>解析线路</th>
+<th>记录值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNAME</td>
+<td>www</td>
+<td>默认</td>
+<td>用户名.github.io</td>
+</tr>
+<tr>
+<td>A</td>
+<td>@</td>
+<td>默认</td>
+<td>192.30.252.153</td>
+</tr>
+<tr>
+<td>A</td>
+<td>@</td>
+<td>默认</td>
+<td>192.30.252.154</td>
+</tr>
+</tbody>
+</table>
+</div><div style="padding-bottom: 10px;"><ul class="post-copyright">
+<li class="post-copyright-author">
+<strong>本文作者：</strong><a href="/about/">潇九九</a></li><li class="post-copyright-link">
+<strong>本文链接：</strong><a href="http://yoursite.com/2018/07/25/hexo项目部署/">http://yoursite.com/2018/07/25/hexo项目部署/</a></li><li class="post-copyright-license"><strong>版权声明：</strong><a href="/site/">本文所有权归博主所有，转载请注明署名、出处！Thanks</a></li></ul></div><script type="text/javascript" charset="utf-8" src="https://static.bshare.cn/b/buttonLite.js#uuid=2aceecbb-21d7-4746-a9db-3f8da046a833&amp;style=10&amp;bgcolor=Grey&amp;bp=sinaminiblog,qqim,qzone,weixin&amp;ssc=false"></script><div style="float:right;"><a class="bshareDiv" href="www.bshare.cn/share">分享按钮</a></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/10/14/Shell/sed/">MY_sed</a><a class="next" href="/2018/07/24/linux云计阶段1-必备知识/">linux云计阶段1-必备知识</a></div></div></div></div></div></div><div id="footer-000"><div class="footer-02"><div style="max-width:1150px;margin:0 auto;height:200px;"><div class="footer-div-a" id="123" style="display:flex"><div class="footer-div-b" style="height:120px;"><div style="text-align:left;padding-top:20px;padding-bottom:5px;"></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weixin" aria-hidden="true"></i> <a href="https://huanfan-1252958858.cos.ap-shanghai.myqcloud.com/pic/302701117226241178.jpg" title="微信" target="_Blank"> hyaini</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weibo" aria-hidden="true"></i><a title="微博" target="_Blank"> 萧萧</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-qq" aria-hidden="true"></i><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1102144757&amp;site=qq&amp;menu=yes" title="QQ" target="_Blank"> 1102144757</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=ZBwNBQsIDAkkAgscCQUNCEoHCwk" title="邮件" target="_Blank"> xiaolhm@foxmail.com</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-map-marker" aria-hidden="true"></i><a href="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;s=s%26wd%3D%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E5%94%90%E9%95%87%E6%9D%A5%E5%AE%89%E8%B7%AF%E5%85%B4%E4%B8%9A%E9%93%B6%E8%A1%8C%28%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%29" title="地址" target="_Blank">  Pudong New Area, Chengdu, China</a></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:autopadding-top:20px;padding-bottom:5px;"><div style="padding-top:20px;padding-bottom:20px;"><img heigth="150px" width="150px" src="/img/gongzhonghao.jpg"></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"> </div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"><h3><a href="/href/">友情链接</a></h3><h3><a href="/site/">关于本站</a></h3><h3><a href="/about/">关于博主</a></h3></div></div></div></div></div><div id="footer-01" style="text-align:center;margin:auto;font-size:14px;background-color:#f5f5f5;"><div class="footer-div-a" style="max-width:1150px;display:flex;margin:0 auto"><div class="footer-div-b" style="padding-left:10px;padding-top:7px;padding-bottom:7px;text-align: left;"><a rel="nofollow">©2018  ❤ </a><a href="/." rel="nofollow" font-size="14px" font-weight="bold">故事，这里有</a></div><div class="footer-div-b" style="padding-right:10px;padding-top:15px;padding-bottom:7px;text-align: right;"><a href="https://tongji.baidu.com/web/25553450/overview/index?siteId=11976031" target="_Blank" title="百度统计"><img class="nofancybox" width="40px" height="15px" src="/img/baidu.png"></a><a>&emsp;</a><a href="https://github.com/HLQ1102/" target="_Blank" title="github" style="font-size:19px;"><i class="fa fa-github" aria-hidden="true"></i></a><a>&emsp;</a><a href="https://gitee.com/iyohei" target="_Blank" title="码云"><img class="nofancybox" width="15px" height="15px" src="/img/gitee.ico"></a></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.1.0" async></script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.1.0" async></script><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.1.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.1.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.1.0"></script></div></div></html><script type="text/javascript" src="/js/zidingyi.js" async></script>

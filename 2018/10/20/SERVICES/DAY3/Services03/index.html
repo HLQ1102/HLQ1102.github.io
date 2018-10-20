@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>进程管理及NDS解析分离 | 故事，这里有</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.1.0"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script type="text/javascript" src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script type="text/javascript" src="https://news.qq.com/newsweather/showWeather.js"></script><script src="//msite.baidu.com/sdk/c.js?appid=1603347506741536"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body></body><div class="search-total"><div class="search-quanbu"></div><div class="showSerch"><div class="div serach-span"><a href="#" onclick="outSerch()">关闭&nbsp;&nbsp;&nbsp;</a><br><br></div><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="回车键开启搜索" type="text" name="q" results="0"><br><div id="local-search-result"></div></div></div></div></div><div class="header-02" id="header-02"><div class="header-02-1"><div class="nav2" id="nav1"><div class="header-02-2"><span class="logo-line-before"><i></i></span><a href="/.">故事，这里有</a><span class="logo-line-before"><i></i></span></div><div class="header-02-3"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a></div><div class="header-03"><div class="header-02-5" onclick="showBars()"> <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></div><div class="header-02-4"> <a onclick="showSerch()" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div><div class="header-02-6"> <a href="/."><i class="fa fa-home" aria-hidden="true"></i></a></div></div></div></div></div><div class="header-04" id="header-04" style="display: none;"> <div class="nav2"><a class="current" href="/."><i class="fa fa-home2"> 首页</i></a><a href="/archives/"><i class="fa fa-archive2"> 时间轴</i></a><a href="/music/"><i class="fa fa-user2"> 音乐</i></a><a href="/tool/"><i class="fa fa-user2"> 工具</i></a><a href="/comment/"><i class="fa fa-rss2"> 留言</i></a><a href="/about/"><i class="fa fa-rss2"> 关于博主</i></a><a href="/site/"><i class="fa fa-rss2"> 关于本站</i></a><a href="/href/"><i class="fa fa-rss2"> 友情链接</i></a></div></div><div class="body_container"><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4" style="width: 100%;"><div class="content_container"><div class="post-02"></div><div class="post"><h1 class="post-title"><a href="/">进程管理及NDS解析分离</a></h1><div class="post-meta"><a href="https://ziyuan.baidu.com/xzh/commit/method?appid=1603347506741536" target="_Blank">10-20</a><span class="leancloud_visitors" id="/2018/10/20/SERVICES/DAY3/Services03/" data-flag-title="文章阅读量统计">&nbsp;| <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span class="leancloud-visitors-count"></span><span> 阅读</span></span><span>&nbsp;|&nbsp;<i class="fa fa-keyboard-o"></i>&nbsp;<span class="post-count">2.6k 字 </span></span></div><br><br><div class="post-content"><p>一、检测教学环境Yum仓库<br>虚拟机A<br>[root@svr7 ~]# yum clean all<br>[root@svr7 ~]# yum repolist<br>虚拟机B<br>[root@pc207 ~]# yum clean all<br>[root@pc207 ~]# yum repolist </p>
+<p>##################################################<br>在虚拟机A上搭建DNS服务器,负责解析sina.com<br>最终实现虚拟机A解析<a href="http://www.sina.com结果为192.168.4.10" target="_blank" rel="noopener">www.sina.com结果为192.168.4.10</a></p>
+<p>######################################################<br>Split分离解析</p>
+<p>什么是分离解析<br>• 当收到客户机的DNS查询请求的时候<br>– 能够区分客户机的来源地址<br>– 为不同类别的客户机提供不同的解析结果(IP地址)<br>– 为客户端提供最近的网络资源</p>
+<pre><code>view &quot;联通&quot;  {
+match-clients { 来源地址1; .. ..; }
+zone &quot;12306.cn&quot; IN {
+...... 地址库1;
+}; };
+
+view &quot;铁通&quot;  {
+match-clients { 来源地址2; .. .. ; }
+zone &quot;12306.cn&quot; IN {
+...... 地址库2;
+}; };
+</code></pre><p>####################################################</p>
+<p>• 环境及需求<br>– 权威DNS:svr7.tedu.cn 192.168.4.7<br>– 负责区域:tedu.cn<br>– A记录分离解析 —— 以 <a href="http://www.tedu.cn" target="_blank" rel="noopener">www.tedu.cn</a> 为例<br>客户机来自 解析结果<br>  192.168.4.207———&gt;192.168.4.100<br>          其他地址 ———&gt;1.2.3.4</p>
+<p>注意事项：<br>   1.所有客户端都要找到自己的类别，分类要合理<br>   2.优先级由上及下匹配， 匹配及停止<br>   3.所有的zone必须都在view中</p>
+<p>虚拟机A：<br>1.书写配置文件/etc/named.conf<br>    view “nsd” {                        #分类名称<br>      match-clients { 192.168.4.207; };  #匹配客户端来源IP地址<br>      zone “tedu.cn” IN {              #定义负责解析的区域<br>            type master;                #定义主DNS服务器<br>            file “tedu.cn.zone”;        #地址库文件名称<br>     };<br>    };<br>    view “other” {<br>      match-clients { any; };<br>       zone “tedu.cn” IN {<br>            type master;<br>             file “tedu.cn.other”;<br>     };<br>    };<br>2.建立两个地址库文件,写入不同解析结果,然后重起服务<br>[root@svr7 /]# vim /var/named/tedu.cn.zone<br>    tedu.cn.  NS    svr7<br>    svr7      A     192.168.4.7<br>    www       A     192.168.4.100<br>[root@svr7 /]# vim /var/named/tedu.cn.other<br>    tedu.cn.  NS    svr7<br>    svr7      A     192.168.4.7<br>    www       A     1.2.3.4</p>
+<p>##################################################<br>acl地址列表</p>
+<p>  acl “liantong” {<br>    IP地址1; IP地址2; .. ..<br>      网段1; 网段2; .. ..<br>      .. ..<br>     };</p>
+<p>1.书写配置文件/etc/named.conf<br>acl “test” { 192.168.4.207; 192.168.4.200;<br>                      192.168.7.0/24; 192.168.1.0/24;<br>                      192.168.10.0/24; };</p>
+<p>view “nsd” {<br>  match-clients { test; };<br>  zone “tedu.cn” IN {<br>        type master;<br>        file “tedu.cn.zone”;<br> };<br>};</p>
+<p>###################################################<br>多区域的分离解析<br>注意事项：每一个view中，zone的个数要一致,zone的区域也要一致</p>
+<p>  <a href="http://www.tedu.cn" target="_blank" rel="noopener">www.tedu.cn</a>  192.168.4.207—-》192.168.4.100<br>  <a href="http://www.tedu.cn" target="_blank" rel="noopener">www.tedu.cn</a>  any—-》1.2.3.4</p>
+<p>  <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a>  192.168.4.207—-》192.168.4.100<br>  <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a>  192.168.4.200—-》11.12.13.14<br>  <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a>  any—-》1.2.3.4</p>
+<p>[root@svr7 /]# vim /etc/named.conf<br>options {<br>        directory       “/var/named”;<br> };<br>acl “test” {  192.168.4.207; };<br>view “nsd” {<br>  match-clients { test; };<br>  zone “tedu.cn” IN {<br>        type master;<br>        file “tedu.cn.zone”;—-》192.168.4.100<br>   };<br>  zone “qq.com” IN {<br>        type master;<br>        file “qq.com.zone”;—-》192.168.4.100<br>   };<br> };<br>view “test” {<br>  match-clients { 192.168.4.200; };<br>  zone “tedu.cn” IN {<br>        type master;<br>        file “tedu.cn.test”;—-》1.2.3.4<br>   };<br>  zone “qq.com” IN {<br>        type master;<br>        file “qq.com.test”;—-》11.12.13.14<br>   };<br> };<br>view “other” {<br>  match-clients { any; };<br>  zone “tedu.cn” IN {<br>        type master;<br>        file “tedu.cn.test”;—-》1.2.3.4<br> };<br>  zone “qq.com” IN {<br>        type master;<br>        file “qq.com.other”;—-》1.2.3.4<br> };<br> };</p>
+<p>################################################<br>RAID阵列概述<br>• 廉价冗余磁盘阵列<br>– 通过硬件/软件技术,将多个较小/低速的磁盘整合成一个大磁盘</p>
+<p>– 阵列的价值:提升I/O效率、硬件级别的数据冗余<br>– 不同RAID级别的功能、特性各不相同</p>
+<p>• RAID 0,条带模式<br>– 同一个文档分散存放在不同磁盘<br>– 并行写入以提高效率<br>– 至少需要2块磁盘</p>
+<p>• RAID 1,镜像模式<br>– 一个文档复制成多份,分别写入不同磁盘<br>– 多份拷贝提高可靠性,效率无提升<br>– 至少需要2块磁盘</p>
+<p>• RAID5,高性价比模式<br>– 相当于RAID0和RAID1的折中方案<br>– 需要至少一块磁盘的容量来存放校验数据<br>– 至少需要3块磁盘</p>
+<p>• RAID6,高性价比/可靠模式<br>– 相当于扩展的RAID5阵列,提供2份独立校验方案<br>– 需要至少两块磁盘的容量来存放校验数据<br>– 至少需要4块磁盘</p>
+<p>RAID0/1/10<br>• RAID 0+1/RAID 1+0<br>– 整合RAID 0、RAID 1的优势<br>– 并行存取提高效率、镜像写入提高可靠性<br>– 至少需要4块磁盘</p>
+<p>• 硬RAID:由RAID控制卡管理阵列<br>– 主板 —&gt; 阵列卡—&gt; 磁盘 —&gt; 操作系统—&gt;  数据<br>• 软RAID:由操作系统来管理阵列<br>– 主板 —&gt;  磁盘—&gt; 操作系统—&gt;  RAID软件—&gt;  数据</p>
+<p>###############################################<br>进程管理</p>
+<pre><code>程序：静态的代码   仅占用磁盘存储
+
+进程：动态的代码   占用 CPU与内存
+
+唯一编号：PID
+
+父进程/子进程
+</code></pre><p>查看进程树<br>• pstree — Processes Tree<br>– 格式:pstree [选项] [PID或用户名]</p>
+<p>• 常用命令选项<br>– -a:显示完整的命令行<br>– -p:列出对应PID编号</p>
+<p>[root@svr7 /]# pstree</p>
+<p>   systemd(上帝进程)</p>
+<p>[root@svr7 /]# pstree  lisi<br>bash───vim<br>[root@svr7 /]# pstree  -p  lisi<br>bash(7653)───vim(7689)<br>[root@svr7 /]# pstree  -ap lisi<br>bash,7653<br>  └─vim,7689 a.txt<br>[root@svr7 /]# pstree  -ap</p>
+<p>###########################################</p>
+<p>• ps aux 操作<br>– 列出正在运行的所有进程</p>
+<p>用户 进程ID %CPU %内存 虚拟内存 固定内存 终端 状态 起始时间 CPU时间 程序指令</p>
+<p>• ps -elf 操作<br>– 列出正在运行的所有进程<br>  PPID:父进程的PID号</p>
+<p>补充命令：<br>   统计文件的行数<br>[root@svr7 /]# wc -l /etc/passwd<br>[root@svr7 /]# find  /etc  -name  “<em>.conf”  |  wc -l<br>[root@svr7 /]# find  /etc  -name  “</em>tab”   |  wc -l<br>[root@svr7 /]# find  /etc  -name  “*tab”</p>
+<p>[root@svr7 /]# ps aux  |  wc -l  #统计正在运行的进程有多少个</p>
+<p>[root@svr7 /]# ps aux </p>
+<p>[root@svr7 /]# ps -elf </p>
+<p>#######################################################</p>
+<p>进程动态排名<br>• top 交互式工具<br>– 格式:top   [-d 刷新秒数]   [-U 用户名]<br>   按键盘大写的P  进行CPU排序<br>   按键盘大写的M  进行内存排序</p>
+<p>#####################################################<br>检索进程<br>• pgrep — Process Grep<br>– 用途:pgrep [选项]… 查询条件</p>
+<p>• 常用命令选项<br>– -l:输出进程名,而不仅仅是 PID<br>– -U:检索指定用户的进程<br>– -t:检索指定终端的进程<br>– -x:精确匹配完整的进程名</p>
+<p>[root@svr7 /]# pgrep    cron<br>[root@svr7 /]# pgrep -l  cron<br>[root@svr7 /]# pgrep -l  a<br>[root@svr7 /]# pgrep -l  named<br>[root@svr7 /]# pgrep -l  lib </p>
+<p>[root@svr7 /]# who    #查看当前登陆的用户信息<br>[root@svr7 /]# pgrep -lU lisi<br>[root@svr7 /]# pgrep -lU lisi -t pts/1<br>[root@svr7 /]# pgrep -lU lisi -t pts/2</p>
+<p>######################################################</p>
+<p>进程的前后台调度</p>
+<p>• 后台启动<br> – 在命令行末尾添加“&amp;”符号,不占用当前终端</p>
+<p>[root@svr7 /]# sleep  1000  &amp;     #正在运行放入后台<br>[root@svr7 /]# jobs               #查看后台进程信息<br>[root@svr7 /]# sleep 800<br>^Z                            #按Ctrl+Z暂停放入后台<br>[2]+  已停止               sleep 800<br>[root@svr7 /]# jobs<br>[root@svr7 /]# bg 2       #将后台编号为2的进程，继续运行<br>[root@svr7 /]# jobs<br>[root@svr7 /]# fg 2       #将后台编号为2的进程，恢复到前台运行<br>sleep 800<br>^C                        #按Ctrl+c结束进程<br>[root@svr7 /]# jobs<br>[root@svr7 /]# fg 1       #将后台编号为1的进程，恢复到前台运行<br>sleep 1000<br>^C                        #按Ctrl+c结束进程<br>[root@svr7 /]# jobs </p>
+<p>####################################################<br>杀死进程<br>• 干掉进程的不同方法<br>– Ctrl+c 组合键,中断当前命令程序<br>– kill [-9] PID…<br>– killall [-9] 进程名…<br>– pkill 查找条件</p>
+<p>[root@svr7 /]# sleep 100 &amp;<br>[root@svr7 /]# sleep 200 &amp;<br>[root@svr7 /]# sleep 300 &amp;</p>
+<p>[root@svr7 /]# jobs -l<br>[root@svr7 /]# kill  8923<br>[root@svr7 /]# killall  sleep</p>
+<p>[root@svr7 /]# jobs<br>[root@svr7 /]# killall -9 sleep</p>
+<p>################################################<br>杀死一个用户所有的进程（强制踢出一个用户）<br>[root@svr7 /]# killall -9 -u lisi</p>
+<p>################################################<br>日志管理</p>
+<p>日志的功能<br>• 系统和程序的“日记本”<br>– 记录系统、程序运行中发生的各种事件<br>– 通过查看日志,了解及排除故障<br>– 信息安全控制的  依据</p>
+<p>• 常见的日志文件</p>
+<pre><code>/var/log/messages  记录内核消息、各种服务的公共消息
+/var/log/dmesg     记录系统启动过程的各种消息
+/var/log/cron      记录与cron计划任务相关的消息
+/var/log/maillog   记录邮件收发相关的消息
+/var/log/secure    记录与访问限制相关的安全消息
+</code></pre><p>日志分析<br>• 通用分析工具<br>– tail、tailf、less、grep等文本浏览/检索命令<br>– awk、sed等格式化过滤工具</p>
+<pre><code>tailf:实时跟踪日志消息
+</code></pre><p>####################################################<br>用户登录分析<br>• users、who、w 命令<br>– 查看已登录的用户信息,详细度不同</p>
+<p>• last、lastb 命令<br>– 查看最近登录成功/失败的用户信息</p>
+<p>[root@svr7 /]#  users<br>[root@svr7 /]#  who<br>[root@svr7 /]#  w<br>[root@svr7 /]#  last -2   #查看最近登录成功<br>[root@svr7 /]#  lastb -2  #查看最近登录失败</p>
+<p>###################################################<br>• Linux内核定义的事件紧急程度<br>– 分为 0~7 共8种优先级别<br>– 其数值越小,表示对应事件越紧急/重要</p>
+<p>  0  EMERG（紧急）       会导致主机系统不可用的情况<br>  1  ALERT（警告）       必须马上采取措施解决的问题<br>  2  CRIT（严重）        比较严重的情况<br>  3  ERR（错误）        运行出现错误<br>  4  WARNING（提醒）    可能会影响系统功能的事件<br>  5  NOTICE（注意）      不会影响系统但值得注意<br>  6  INFO（信息）         一般信息<br>  7  DEBUG（调试）        程序或系统调试信息等</p>
+<p>##################################################<br>使用journalctl工具<br>• 提取由 systemd-journal 服务搜集的日志<br>– 主要包括内核/系统日志、服务日志</p>
+<p>• 常见用法<br>– journalctl | grep 关键词<br>– journalctl -u 服务名    [-p 优先级]<br>– journalctl -n 消息条数<br>– journalctl –since=”yyyy-mm-dd HH:MM:SS” –until=”yyyy-mm-dd HH:MM:SS”</p>
+<p>[root@svr7 /]# yum -y install httpd<br>[root@svr7 /]# systemctl restart httpd<br>[root@svr7 /]# journalctl -u httpd<br>[root@svr7 /]# journalctl -u named</p>
+<p>######################################################<br>systemctl控制</p>
+<p>• Linux系统和服务管理器<br>– 是内核引导之后加载的第一个初始化进程(PID=1)<br>– 负责掌控整个Linux的运行/服务资源组合</p>
+<p>systemd<br>• 一个更高效的系统&amp;服务管理器<br>– 开机服务并行启动,各系统服务间的精确依赖<br>– 配置目录:/etc/systemd/system/<br>– 服务目录:/lib/systemd/system/<br>– 主要管理工具:systemctl</p>
+<p>管理众多服务</p>
+<h1 id="systemctl-start-服务名-开启服务"><a href="#systemctl-start-服务名-开启服务" class="headerlink" title="systemctl start 服务名      #开启服务"></a>systemctl start 服务名      #开启服务</h1><h1 id="systemctl-stop-服务名-关闭服务"><a href="#systemctl-stop-服务名-关闭服务" class="headerlink" title="systemctl stop 服务名        #关闭服务"></a>systemctl stop 服务名        #关闭服务</h1><h1 id="systemctl-restart-服务名-重起服务"><a href="#systemctl-restart-服务名-重起服务" class="headerlink" title="systemctl restart 服务名   #重起服务"></a>systemctl restart 服务名   #重起服务</h1><h1 id="systemctl-status-服务名-查看服务状态"><a href="#systemctl-status-服务名-查看服务状态" class="headerlink" title="systemctl status 服务名     #查看服务状态"></a>systemctl status 服务名     #查看服务状态</h1><h1 id="systemctl-enable-服务名-设置服务开机自起"><a href="#systemctl-enable-服务名-设置服务开机自起" class="headerlink" title="systemctl enable 服务名     #设置服务开机自起"></a>systemctl enable 服务名     #设置服务开机自起</h1><h1 id="systemctl-disable-服务名-设置服务禁止开机自起"><a href="#systemctl-disable-服务名-设置服务禁止开机自起" class="headerlink" title="systemctl disable 服务名    #设置服务禁止开机自起"></a>systemctl disable 服务名    #设置服务禁止开机自起</h1><p>#####################################################</p>
+<p>RHEL6：运行级别     数据中心（IDC）   300</p>
+<pre><code>    0：关机       0个服务
+1：单用户模式（修复模式  破解密码模式） 50个服务
+2：字符界面（不支持网络） 100个服务
+3：字符界面（支持网络） 150个服务
+4：未定义
+5：图形界面    260个服务
+6：重起    0个服务
+</code></pre><p>   切换运行级别的命令：init</p>
+<p>RHEL7:运行模式</p>
+<p>   graphical.target :图形模式<br>   multi-user.target：字符模式</p>
+<p>当前直接切换<br>[root@svr7 /]# systemctl isolate graphical.target<br>[root@svr7 /]# systemctl isolate multi-user.target</p>
+<p>修改永久的默认模式<br>[root@svr7 /]# systemctl get-default<br>multi-user.target<br>[root@svr7 /]# systemctl set-default graphical.target<br>[root@svr7 /]# systemctl get-default </p>
+<p>[root@svr7 /]# reboot </p>
+<p>######################################################</p>
+</div><div style="padding-bottom: 10px;"><ul class="post-copyright">
+<li class="post-copyright-author">
+<strong>本文作者：</strong><a href="/about/">潇九九</a></li><li class="post-copyright-link">
+<strong>本文链接：</strong><a href="http://yoursite.com/2018/10/20/SERVICES/DAY3/Services03/">http://yoursite.com/2018/10/20/SERVICES/DAY3/Services03/</a></li><li class="post-copyright-license"><strong>版权声明：</strong><a href="/site/">本文所有权归博主所有，转载请注明署名、出处！Thanks</a></li></ul></div><script type="text/javascript" charset="utf-8" src="https://static.bshare.cn/b/buttonLite.js#uuid=2aceecbb-21d7-4746-a9db-3f8da046a833&amp;style=10&amp;bgcolor=Grey&amp;bp=sinaminiblog,qqim,qzone,weixin&amp;ssc=false"></script><div style="float:right;"><a class="bshareDiv" href="www.bshare.cn/share">分享按钮</a></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/10/20/SERVICES/DAY4/Services04/">PXE装机</a><a class="next" href="/2018/10/20/SERVICES/DAY2/Services02/">DNS的搭建</a></div></div></div></div></div></div><div id="footer-000"><div class="footer-02"><div style="max-width:1150px;margin:0 auto;height:200px;"><div class="footer-div-a" id="123" style="display:flex"><div class="footer-div-b" style="height:120px;"><div style="text-align:left;padding-top:20px;padding-bottom:5px;"></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weixin" aria-hidden="true"></i> <a href="https://huanfan-1252958858.cos.ap-shanghai.myqcloud.com/pic/302701117226241178.jpg" title="微信" target="_Blank"> hyaini</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-weibo" aria-hidden="true"></i><a title="微博" target="_Blank"> 萧萧</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-qq" aria-hidden="true"></i><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1102144757&amp;site=qq&amp;menu=yes" title="QQ" target="_Blank"> 1102144757</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=ZBwNBQsIDAkkAgscCQUNCEoHCwk" title="邮件" target="_Blank"> xiaolhm@foxmail.com</a></div><div style="padding-top:7px;padding-bottom:7px;padding-left:5px;text-align:left;"><i class="fa fa-map-marker" aria-hidden="true"></i><a href="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;s=s%26wd%3D%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E5%94%90%E9%95%87%E6%9D%A5%E5%AE%89%E8%B7%AF%E5%85%B4%E4%B8%9A%E9%93%B6%E8%A1%8C%28%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%29" title="地址" target="_Blank">  Pudong New Area, Chengdu, China</a></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:autopadding-top:20px;padding-bottom:5px;"><div style="padding-top:20px;padding-bottom:20px;"><img heigth="150px" width="150px" src="/img/gongzhonghao.jpg"></div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"> </div></div><div class="footer-div-b" style="height:120px;margin:0 auto;wigth:auto;"><div style="padding-top:20px;"><h3><a href="/href/">友情链接</a></h3><h3><a href="/site/">关于本站</a></h3><h3><a href="/about/">关于博主</a></h3></div></div></div></div></div><div id="footer-01" style="text-align:center;margin:auto;font-size:14px;background-color:#f5f5f5;"><div class="footer-div-a" style="max-width:1150px;display:flex;margin:0 auto"><div class="footer-div-b" style="padding-left:10px;padding-top:7px;padding-bottom:7px;text-align: left;"><a rel="nofollow">©2018  ❤ </a><a href="/." rel="nofollow" font-size="14px" font-weight="bold">故事，这里有</a></div><div class="footer-div-b" style="padding-right:10px;padding-top:15px;padding-bottom:7px;text-align: right;"><a href="https://tongji.baidu.com/web/25553450/overview/index?siteId=11976031" target="_Blank" title="百度统计"><img class="nofancybox" width="40px" height="15px" src="/img/baidu.png"></a><a>&emsp;</a><a href="https://github.com/HLQ1102/" target="_Blank" title="github" style="font-size:19px;"><i class="fa fa-github" aria-hidden="true"></i></a><a>&emsp;</a><a href="https://gitee.com/iyohei" target="_Blank" title="码云"><img class="nofancybox" width="15px" height="15px" src="/img/gitee.ico"></a></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.1.0" async></script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.1.0" async></script><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.1.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.1.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.1.0"></script></div></div></html><script type="text/javascript" src="/js/zidingyi.js" async></script>
